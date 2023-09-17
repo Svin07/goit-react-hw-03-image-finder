@@ -1,6 +1,6 @@
 import ImageGalleryItem from '../ImageGalleryItem/ImageGalleryItem';
 import css from './ImageGallery.module.css';
-// import { Component } from 'react';
+
 
 export default function ImageGallery({ hits }) {
   return (

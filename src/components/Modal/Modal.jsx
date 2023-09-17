@@ -1,4 +1,4 @@
-// import * as basicLightbox from 'basiclightbox';
+
 import css from './Modal.module.css';
 
 function Modal({}) {
