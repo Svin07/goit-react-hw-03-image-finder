@@ -11,7 +11,7 @@ class Searchbar extends Component {
   };
 
   onSubmit = e => {
-    e.prevent.defolt();
+    e.preventDefault();
     this.props.onSubmit(this.state.value);
   };
 
