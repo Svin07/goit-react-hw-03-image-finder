@@ -5,8 +5,9 @@ import ImageGallery from './ImageGallery/ImageGallery';
 // import Modal from './Modal/Modal';
 import Searchbar from './Searchbar/Searchbar';
 import './styles.css';
-import getPicturesBySearch from '../API/hits';
+import {getPicturesBySearch} from '../API/hits';
 import { Component } from 'react';
+
 
 export class App extends Component {
   state = {
@@ -25,6 +26,7 @@ export class App extends Component {
     try {
       this.setState({ isLoading: true });
       const data = await getPicturesBySearch(this.state.searchQuery);
+      
       this.setState({ hits: data.hits });
     } catch (error) {
       this.setState({ error: error.response.data });
@@ -42,7 +44,11 @@ export class App extends Component {
   };
 
   render() {
+
+
     const { error, isLoading, hits } = this.state;
+    
+  
     return (
       <div>
         {error && <h1>{Error}</h1>}
