@@ -1,5 +1,8 @@
 import { Component } from 'react';
+
 import css from './Searchbar.module.css';
+import Icon from '@mdi/react';
+import { mdiSearchWeb } from '@mdi/js';
 
 class Searchbar extends Component {
   state = {
@@ -20,6 +23,7 @@ class Searchbar extends Component {
       <header className={css.searchbar}>
         <form onSubmit={this.onSubmit} className={css.searchform}>
           <button type="submit" className={css.searchformbutton}>
+            <Icon path={mdiSearchWeb} size={1} />
             <span className={css.searchformbuttonlabel}>Search</span>
           </button>
 
