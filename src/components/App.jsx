@@ -74,8 +74,6 @@ export class App extends Component {
     const { error, isLoading, hits, showModal, totalHits, page, imgUrl } =
       this.state;
 
-    const maxPage = totalHits / 12;
-
     return (
       <div>
         {error && <h1>{Error}</h1>}
@@ -92,7 +90,7 @@ export class App extends Component {
           ) : (
             <ImageGallery hits={hits} openModal={this.updateImg} />
           ))}
-        {totalHits > 12 && page < maxPage && (
+        {totalHits > 12 && page < Math.ceil(totalHits / 12) && (
           <Button paginationPageUpdate={this.paginationPageUpdate} />
         )}
       </div>

@@ -7,7 +7,7 @@ class Modal extends Component {
   }
 
   componentWillUnmount() {
-    window.addEventListener('keydown', this.hendlyKeyDown);
+    window.removeEventListener('keydown', this.hendlyKeyDown);
   }
 
   hendlyKeyDown = e => {
