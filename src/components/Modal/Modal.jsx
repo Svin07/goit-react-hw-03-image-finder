@@ -12,7 +12,6 @@ class Modal extends Component {
 
   hendlyKeyDown = e => {
     if (e.code === 'Escape') {
-      console.log(e.code);
       this.props.onClose();
     }
   };

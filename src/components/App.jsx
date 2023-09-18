@@ -16,11 +16,8 @@ export class App extends Component {
     searchQuery: '',
     totalHits: 0,
     page: 1,
+    imgUrl: '',
   };
-
-  // componentDidUpdate(prevProps, prevState) {
-  //   prevState.searchQuery !== this.state.searchQuery && this.fetchHits();
-  // }
 
   componentDidUpdate(prevProps, prevState) {
     if (
@@ -65,8 +62,17 @@ export class App extends Component {
     }));
   };
 
+  updateImg = evt => {
+    this.setState({
+      imgUrl: evt.target.dataset.url,
+    });
+
+    this.togleModal();
+  };
+
   render() {
-    const { error, isLoading, hits, showModal, totalHits, page } = this.state;
+    const { error, isLoading, hits, showModal, totalHits, page, imgUrl } =
+      this.state;
 
     const maxPage = totalHits / 12;
 
@@ -75,10 +81,7 @@ export class App extends Component {
         {error && <h1>{Error}</h1>}
         {showModal && (
           <Modal onClose={this.togleModal}>
-            <img
-              src="https://pixabay.com/get/gf1cc6a94b157226464ee0b30eaace5bc94dd132b762a0b740b1f8d6f6d576a97b39057f3ac3ac095770a2b3a4e8585077682aa2465c97284fe52d92b7fddb108_1280.jpg"
-              alt="img"
-            />
+            <img src={imgUrl} alt="" />
           </Modal>
         )}
         <Searchbar onSubmit={this.handlySetSearchQuery} />
@@ -87,7 +90,7 @@ export class App extends Component {
           (totalHits === 0 ? (
             <p>No data found</p>
           ) : (
-            <ImageGallery hits={hits} togleModal={this.togleModal} />
+            <ImageGallery hits={hits} openModal={this.updateImg} />
           ))}
         {totalHits > 12 && page < maxPage && (
           <Button paginationPageUpdate={this.paginationPageUpdate} />
